@@ -1,16 +1,17 @@
 
+
 module.exports = function(app) {
 
 
-const taskController =('../controllers/todolistController.js')
+const taskController =('../controllers/todoListController.js')
 
 app.route('/tasks')
-   .get(todoList.findAll)
-   .post(todoList.create);
+   .get(taskController.findAll)
+   .post(taskController.create);
 
-app.route('/tasks/taskid')
-    .get(todoList.findById)
-   .put(todoList.update)
-   .delete(todoList.delete);
+app.route('/tasks/:taskId')
+    .get(taskController.findById)
+   .put(taskController.update)
+   .delete(taskController.remove);
 
 }

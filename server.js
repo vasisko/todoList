@@ -1,8 +1,16 @@
-var express = require('express'),
+const 
+  express = require('express'),
   app = express(),
-  port = process.env.PORT || 3000;
+  Task = require('./api/models/todoListModel'),
+  routes = require('./api/routes/todoListRoutes'),
+  mongoose = require('mongoose'),
+  PORT = process.env.PORT || 3000;
 
-console.log('Server Running:  todolist Restful API app');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/Tododb'); 
+ 
+app.use(routes);
 
-
-app.listen(port)
+app.listen(PORT, () => {
+  console.log('Server Running on port ' + PORT + ' ...  todolist Restful API app');
+});
